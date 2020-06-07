@@ -1,0 +1,9 @@
+8
+sabado 10 00 sabado 13 30
+sabado 13 15 sabado 14 15
+sabado 13 30 sabado 17 45
+sabado 22 00 domingo 3 45
+domingo 17 25 domingo 18 15
+domingo 18 00 domingo 18 30
+domingo 18 20 domingo 23 00
+lunes 11 00 lunes 12 15
