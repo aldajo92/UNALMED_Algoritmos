@@ -2,9 +2,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
-    static int[] positions = new int[5002];
+    static final int MAX_SIZE = 5002;
+    static int[] positions = new int[MAX_SIZE];
 
     public static void main(String[] args) throws IOException {
         BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
@@ -23,8 +25,9 @@ public class Main {
     }
 
     static int processData(int[][] values, int m) {
-        Arrays.sort(values, (int[] a, int[] b) -> b[1] - a[1]);
+        Arrays.sort(values, Comparator.comparingInt((int[] a) -> a[1]).reversed());
         int maxPos = 0;
+        int result = 0;
         for (int i = 0; i < m; i++) {
             int pos = (values[i][0]/10);
             if(positions[pos] == 0){
@@ -35,13 +38,12 @@ public class Main {
                     pos--;
                 }
                 positions[getCyclicPos(pos, m)] = values[i][1];
+                if(pos < 0){
+                    result += values[i][1];
+                }
             }
         }
-        int result = 0;
-        for (int i = maxPos + 1; i < m; i++) {
-            result += positions[i];
-        }
-        positions = new int[5002];
+        positions = new int[MAX_SIZE];
         return result;
     }
     
