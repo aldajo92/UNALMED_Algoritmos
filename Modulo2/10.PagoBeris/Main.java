@@ -26,12 +26,14 @@ public class Main {
         long bi = 0;
         for (int i = 0; i < beris.length; i++) {
             bi = currentValue/beris[i];
+            currentValue = currentValue%beris[i];
             if(bi > 0){
                 sb.append(String.format("%d:%d", bi, beris[i]));
+                if(currentValue > 0){
+                    sb.append(" ");
+                }
             }
-            currentValue = currentValue%beris[i];
             if(currentValue == 0) break;
-            else sb.append(" ");
         }
         return sb.toString();
     }
