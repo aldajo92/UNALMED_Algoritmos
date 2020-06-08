@@ -7,13 +7,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(b.readLine());
+        StringBuilder strings = new StringBuilder();
         for (int i = 0; i < n; i++) {
             long value = Long.parseLong(b.readLine());
             String result = processData(value);
             if(!result.isEmpty()){
-                System.out.println(result);
+                strings.append(result);
+                strings.append("\n");
+                // System.out.println(result);
             }
         }
+        System.out.print(strings);
     }
 
     static String processData(long value){
@@ -24,12 +28,10 @@ public class Main {
             bi = currentValue/beris[i];
             if(bi > 0){
                 sb.append(String.format("%d:%d", bi, beris[i]));
-                if(i < beris.length - 1){
-                    sb.append(" ");
-                }
             }
             currentValue = currentValue%beris[i];
             if(currentValue == 0) break;
+            else sb.append(" ");
         }
         return sb.toString();
     }
